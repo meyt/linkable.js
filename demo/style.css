@@ -285,4 +285,6 @@ a.pure-button-primary {
   font-size: 12px;
   font-family: sans-serif;
   padding: 6px;
+  border: solid 1px #eee;
+  margin-bottom: 2px;
 }
