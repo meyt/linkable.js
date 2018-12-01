@@ -1,6 +1,6 @@
 {
   "name": "linkable",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Detect URI, Email, Hashtag and Mention from plain-text and convert into HTML clickable hyperlink",
   "main": "index.js",
   "scripts": {
