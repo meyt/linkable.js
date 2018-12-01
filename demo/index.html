@@ -33,7 +33,36 @@
 
   <div class="splash-container">
     <div class="splash">
-      <textarea id="source"></textarea>
+      <textarea id="source">Examples:
+Simply a domain:
+www.google.com
+Domain with port:
+www.google.com:8000
+URL with query:
+www.google.com/?key=value
+Domain with international TLD:
+github.io
+Email address:
+alex@arrayy.com
+IP address:
+127.0.0.1:8000/somethinghere
+HTML elements won't break:
+<img src='http://dummyimage.com/50'>
+Capital case:
+FTP://GOOGLE.COM
+mixed case:
+youtube.com/watch?v=pS-gbqbVd8c
+Links with parenthesis:
+en.c.org/a_(b)
+Links inside parenthesis:
+(www.google.com)
+Links with paranethisis AND inside paranthesis:
+(en.c.org/a_(x)_(y))
+And non English letters:
+https://ka.wikipedia.org/wiki/მთავარი_გვერდი
+@Mention
+#hash_tag
+      </textarea>
       <div id="result"></div>
     </div>
   </div>
@@ -43,12 +72,14 @@
     var linkable = Linkable()
     var sourceEl = document.getElementById('source')
     var resultEl = document.getElementById('result')
-    sourceEl.onkeyup = function () {
+    var updateResult = function () {
       var result = sourceEl.value
       result = linkable.replace(result)
       result = result.replace(/(?:\r\n|\r|\n)/mg, '<br>')
       resultEl.innerHTML = result
     }
+    sourceEl.onkeyup = updateResult
+    updateResult()
   </script>
 </body>
 </html>
