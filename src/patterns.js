@@ -10,7 +10,7 @@ export function generateGithubMentionPattern () {
 }
 
 export function generateHashtagPattern () {
-  return /^[＃#](?!\d\d)(?!\d$)(?:[^\s.,\/#!$%\^&\*;:\{\}=`()~@-]|[*️⃣#️⃣])+$/ui
+  return /^[＃#](?!\d\d)(?!\d$)(?!#$)(?:[^\s.,\\/#!$%\\^&\\*;:\\{\\}=`()~@-]|[*️⃣#️⃣])+$/ui
 }
 
 export function generateUrlPattern () {
