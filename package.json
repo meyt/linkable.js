@@ -1,7 +1,7 @@
 {
   "name": "linkable",
-  "version": "0.1.1",
-  "description": "Detect URI, Email, Hashtag and Mention from plain-text and convert into HTML clickable hyperlink",
+  "version": "0.1.2",
+  "description": "Detect URL, Email, Hashtag and Mention from plain-text and convert into HTML clickable hyperlink",
   "main": "index.js",
   "scripts": {
     "build": "rollup -c rollup.config.js && cp dist/linkable.min.js demo/linkable.min.js",
