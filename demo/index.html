@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Linkable.js">
+  <title>Linkable.js</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="header">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+      <a class="pure-menu-heading" href="">Linkable.js</a>
+
+      <ul class="pure-menu-list">
+        <li class="pure-menu-item">
+          <a href="https://github.com/meyt/linkable.js" class="pure-menu-link">
+            Github
+          </a>
+        </li>
+        <li class="pure-menu-item">
+          <a href="https://www.npmjs.com/package/linkable-js" class="pure-menu-link">
+            npm
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="splash-container">
+    <div class="splash">
+      <textarea id="source"></textarea>
+      <div id="result"></div>
+    </div>
+  </div>
+
+  <script src="./linkable.min.js"></script>
+  <script>
+    var linkable = Linkable()
+    var sourceEl = document.getElementById('source')
+    var resultEl = document.getElementById('result')
+    sourceEl.onkeyup = function () {
+      var result = sourceEl.value
+      result = linkable.replace(result)
+      result = result.replace(/(?:\r\n|\r|\n)/mg, '<br>')
+      resultEl.innerHTML = result
+    }
+  </script>
+</body>
+</html>

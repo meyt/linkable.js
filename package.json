@@ -1,0 +1,40 @@
+{
+  "name": "linkable",
+  "version": "0.1.0",
+  "description": "Detect URI, Email, Hashtag and Mention from plain-text and convert into HTML clickable hyperlink",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c rollup.config.js && cp dist/linkable.min.js demo/linkable.min.js",
+    "test": "cross-env NODE_ENV=test nyc tape ./tests/*.test.js",
+    "coverage": "cross-env NODE_ENV=test nyc --reporter=text-lcov tape ./tests/*.test.js | coveralls",
+    "tape": "nyc tape ./tests/linkable.test.js",
+    "prepublish": "npm run build"
+  },
+  "nyc": {
+    "require": [
+      "@babel/register"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  },
+  "author": "Mahdi Ghanea.g",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/register": "^7.0.0",
+    "coveralls": "^3.0.2",
+    "cross-env": "^5.2.0",
+    "istanbul": "^0.4.5",
+    "nyc": "^13.1.0",
+    "rollup": "^0.67.3",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-babel-minify": "^6.2.0",
+    "tape": "^4.9.1",
+    "unicode-tr51": "^9.0.1"
+  }
+}
