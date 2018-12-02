@@ -10,7 +10,25 @@ export function generateGithubMentionPattern () {
 }
 
 export function generateHashtagPattern () {
-  return /^[＃#](?!\d\d)(?!\d$)(?!#$)(?:[^\s.,\\/#!$%\\^&\\*;:\\{\\}=`()~@-]|[*️⃣#️⃣])+$/ui
+  return new RegExp(
+    '^' +
+    // Start with ＃ or #
+    '[＃#]' +
+    // Escape start with keypad unicode variations
+    '(?!\uFE0F\u20E3)' +
+    // Escape start with numbers
+    '(?!\\d\\d)(?!\\d$)' +
+    // Escape multiple hash symbols
+    '(?![＃#]+$)' +
+    // Match hashtag
+    '(?:' +
+      // Match any (unicode) characters exclude symbols
+      '[^\\s.,\\/#!$%\\^&\\*;:\\{\\}=`()~@-]+|' +
+      // Exclude keypad unicode variation
+      '\\*\uFE0F\u20E3|' +
+      '#\uFE0F\u20E3)' +
+    '$', 'ui'
+  )
 }
 
 export function generateUrlPattern () {

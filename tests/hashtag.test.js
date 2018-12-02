@@ -11,7 +11,8 @@ const validItems = [
   '#می‌شود',
   '#the_quick_brown_fox_jumps_over_the_lazy_dog',
   '#Lorem_a',
-  '#\uD83D\uDCA9'
+  '#\uD83D\uDCA9',
+  '＃lorem_ipsum'
 ]
 
 const invalidItems = [
@@ -20,6 +21,12 @@ const invalidItems = [
   '#~!@#$%^&*()_+',
   '#',
   '##',
+  '##lorem',
+  '####lorem',
+  '#️⃣false',
+  '＃＃',
+  '＃##️⃣',
+  '###️⃣',
   '#@',
   '#!@$%^&*('
 ]
