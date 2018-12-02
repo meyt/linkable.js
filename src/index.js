@@ -13,7 +13,7 @@ function replaceMention (value) {
 
 function replaceUrl (value) {
   let url = value
-  // not have scheme use default http
+  // Use `http` as default scheme
   if (!urlSchemeRegex.test(url)) {
     url = 'http://' + url
   }
@@ -23,8 +23,6 @@ function replaceUrl (value) {
 function replaceEmail (value) {
   return `<a href="mailto:${value}">${value}</a>`
 }
-// console.log(patterns.urlPattern)
-// throw new Error('')
 
 export default function (options) {
   options = Object.assign({
