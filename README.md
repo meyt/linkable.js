@@ -4,7 +4,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/meyt/linkable.js/badge.svg?branch=master)](https://coveralls.io/github/meyt/linkable.js?branch=master)
 
 Detect URL, Email, Hashtag and Mention from plain-text and convert into HTML clickable hyperlink.
-[Demo](https://meyt.github.io/linkable.js/)
 
 
 ## Install
@@ -14,6 +13,8 @@ $ npm install --save linkable
 ```
 
 ## Usage
+
+[Demo](https://meyt.github.io/linkable.js/)
 
 ```javascript
   import Linkable from 'linkable'
@@ -28,4 +29,17 @@ $ npm install --save linkable
 Output:
 ```html
 This is test with <a href="/hashtag/#hashtag">#hashtag</a> from <a href="/@linkable">@linkable</a> on <a href="http://github.com">github.com</a>
+```
+
+## Options
+
+_for more details see `src/index.js` file_
+```javascript
+const options = {
+  mentionStyle: 'twitter',
+  replaceHashtag: replaceHashtag,
+  replaceMention: replaceMention,
+  replaceUrl: replaceUrl,
+  replaceEmail: replaceEmail
+}
 ```
