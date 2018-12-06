@@ -69,7 +69,7 @@ https://ka.wikipedia.org/wiki/მთავარი_გვერდი
     var resultEl = document.getElementById('result')
     var updateResult = function () {
       var result = sourceEl.value
-      result = linkable.replace(result)
+      result = linkable.replaceLinks(result)
       result = result.replace(/(?:\r\n|\r|\n)/mg, '<br>')
       resultEl.innerHTML = result
     }

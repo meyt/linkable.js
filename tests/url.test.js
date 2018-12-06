@@ -99,7 +99,7 @@ const invalidItems = [
 ]
 
 test('Test URL', (assert) => {
-  const validateUrl = Linkable().validateUrl
+  const validateUrl = Linkable().validators.validateUrl
 
   validItems.forEach(item => {
     assert.equal(validateUrl(item), true, 'Validating: ' + item)

@@ -54,7 +54,7 @@ test('Test Linkable', (assert) => {
   const linkable = Linkable()
 
   matches.forEach(match => {
-    assert.equal(linkable.replace(match[0]), match[1])
+    assert.equal(linkable.replaceLinks(match[0]), match[1])
   })
 
   const optionsList = [
@@ -66,7 +66,7 @@ test('Test Linkable', (assert) => {
   optionsList.forEach(options => {
     const linkable = Linkable(options)
     matches.forEach(match => {
-      linkable.replace(match[0])
+      linkable.replaceLinks(match[0])
     })
   })
 

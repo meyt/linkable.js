@@ -22,7 +22,7 @@ const invalidItems = [
 ]
 
 test('Test Email', (assert) => {
-  const validateEmail = Linkable().validateEmail
+  const validateEmail = Linkable().validators.validateEmail
 
   validItems.forEach(item => {
     assert.equal(validateEmail(item), true, 'Validating: ' + item)

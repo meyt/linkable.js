@@ -52,7 +52,7 @@ test('Test mentions', (assert) => {
   ['twitter', 'github'].forEach(mentionStyle => {
     const validateMention = Linkable({
       mentionStyle: mentionStyle
-    }).validateMention
+    }).validators.validateMention
     validMentions[mentionStyle].forEach(item => {
       assert.equal(
         validateMention(item),

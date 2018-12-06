@@ -33,7 +33,7 @@ export default function (options) {
     replaceEmail: replaceEmail
   }, options)
 
-  const result = {
+  const validators = {
     validateHashtag: options.replaceHashtag === false
       ? function (text) { return false }
       : function (text) {
@@ -56,28 +56,30 @@ export default function (options) {
       ? function (text) { return false }
       : function (text) {
         return patterns.emailPattern.test(text)
-      },
-    replace (text) {
-      const replacer = (word, x) => {
-        if (this.validateHashtag(word)) {
-          return options.replaceHashtag(word)
-        }
-
-        if (this.validateMention(word)) {
-          return options.replaceMention(word)
-        }
-
-        if (this.validateEmail(word)) {
-          return options.replaceEmail(word)
-        }
-
-        if (this.validateUrl(word)) {
-          return options.replaceUrl(word)
-        }
-
-        return word
       }
+  }
+  const replacer = (word) => {
+    if (validators.validateHashtag(word)) {
+      return options.replaceHashtag(word)
+    }
 
+    if (validators.validateMention(word)) {
+      return options.replaceMention(word)
+    }
+
+    if (validators.validateEmail(word)) {
+      return options.replaceEmail(word)
+    }
+
+    if (validators.validateUrl(word)) {
+      return options.replaceUrl(word)
+    }
+
+    return word
+  }
+  const result = {
+    validators: validators,
+    replaceLinks (text) {
       return text.replace(
         /\S+/imgu,
         replacer

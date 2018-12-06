@@ -36,7 +36,7 @@ const punctuationEmoji = ['‼', '〽', '〰', '⁉', '‼']
 const punctuation = ['*', '#']
 
 test('Test hashtags', (assert) => {
-  const validateHashtag = Linkable().validateHashtag
+  const validateHashtag = Linkable().validators.validateHashtag
 
   validItems.forEach(hashtag => {
     assert.equal(validateHashtag(hashtag), true, 'Validating: ' + hashtag)
