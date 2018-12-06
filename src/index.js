@@ -24,9 +24,27 @@ function replaceEmail (value) {
   return `<a href="mailto:${value}">${value}</a>`
 }
 
+/**
+ * @description
+ * Linkable
+ *
+ * @param {Object} options
+ * @param {String} [options.mentionStyle=twitter] Mentioning style
+ * Available styles:
+ * - twitter (e.g: @twitter_official)
+ * - github (e.g: @9gag-repository)
+ * @param {(Function|Boolean)} [options.replaceHashtag=function]
+ * Hashtag replacer method (set false to disable)
+ * @param {(Function|Boolean)} [options.replaceMention=function]
+ * Mention replacer method (set false to disable)
+ * @param {(Function|Boolean)} [options.replaceUrl=function]
+ * URL replacer method (set false to disable)
+ * @param {(Function|Boolean)} [options.replaceEmail=function]
+ * Hashtag replacer method (set false to disable)
+ */
 export default function (options) {
   options = Object.assign({
-    mentionStyle: 'twitter', // twitter | github
+    mentionStyle: 'twitter',
     replaceHashtag: replaceHashtag,
     replaceMention: replaceMention,
     replaceUrl: replaceUrl,
