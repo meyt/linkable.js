@@ -5,3 +5,29 @@
 
 Detect URL, Email, Hashtag and Mention from plain-text and convert into HTML clickable hyperlink.
 [Demo](https://meyt.github.io/linkable.js/)
+
+
+## Install
+
+```bash
+$ npm install --save linkable
+```
+
+## Usage
+
+```javascript
+  import Linkable from 'linkable'
+
+  const text = 'This is test with a #hashtag from @linkable on github.com'
+  const linkable = new Linkable()
+  console.log(
+    linkable.replace(text)
+  )
+```
+
+output:
+```html
+  This is test with <a href="/hashtag/#hashtag">#hashtag</a> from
+  <a href="/@linkable">@linkable</a> on
+  <a href="http://github.com">github.com</a>
+```
