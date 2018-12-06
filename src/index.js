@@ -40,7 +40,7 @@ function replaceEmail (value) {
  * @param {(Function|Boolean)} [options.replaceUrl=function]
  * URL replacer method (set false to disable)
  * @param {(Function|Boolean)} [options.replaceEmail=function]
- * Hashtag replacer method (set false to disable)
+ * Email replacer method (set false to disable)
  */
 export default function (options) {
   options = Object.assign({
