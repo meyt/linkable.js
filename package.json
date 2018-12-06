@@ -2,7 +2,7 @@
   "name": "linkable",
   "version": "0.2.2",
   "description": "Detect URL, Email, Hashtag and Mention from plain-text and convert into HTML clickable hyperlink",
-  "main": "index.js",
+  "main": "dist/linkable.js",
   "scripts": {
     "build": "rollup -c rollup.config.js && cp dist/linkable.min.js demo/linkable.min.js",
     "test": "cross-env NODE_ENV=test nyc tape ./tests/*.test.js",
@@ -23,6 +23,16 @@
   },
   "author": "Mahdi Ghanea.g",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meyt/linkable.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/meyt/linkable.js/issues"
+  },
+  "files": [
+    "/dist"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.1.5",
     "@babel/preset-env": "^7.1.6",
