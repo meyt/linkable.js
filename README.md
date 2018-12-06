@@ -21,13 +21,11 @@ $ npm install --save linkable
   const text = 'This is test with a #hashtag from @linkable on github.com'
   const linkable = new Linkable()
   console.log(
-    linkable.replace(text)
+    linkable.replaceLinks(text)
   )
 ```
 
-output:
+Output:
 ```html
-  This is test with <a href="/hashtag/#hashtag">#hashtag</a> from
-  <a href="/@linkable">@linkable</a> on
-  <a href="http://github.com">github.com</a>
+This is test with <a href="/hashtag/#hashtag">#hashtag</a> from <a href="/@linkable">@linkable</a> on <a href="http://github.com">github.com</a>
 ```
