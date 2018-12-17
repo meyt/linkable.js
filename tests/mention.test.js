@@ -12,7 +12,9 @@ const invalidGlobalMentions = [
   '@~!@#$%^&*()_+',
   '@',
   '@@',
-  '@!@$%^&*('
+  '@!@$%^&*(',
+  '@یونیکد',
+  '@🤵🏻'
 ]
 
 const validMentions = {
