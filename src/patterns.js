@@ -123,5 +123,6 @@ export default {
   githubMentionPattern: generateGithubMentionPattern(),
   twitterMentionPattern: generateTwitterMentionPattern(),
   urlPattern: generateUrlPattern(),
-  emailPattern: generateEmailPattern()
+  emailPattern: generateEmailPattern(),
+  hashtagWithPunctuationAtEnd: /^([＃#]\S[^\s.,/#!‼⁉〰〽$%^&*;:=`~@?-]+)/gui
 }

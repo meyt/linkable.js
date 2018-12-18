@@ -48,6 +48,46 @@ const matches = [
   [
     'one linear demo with (#hashtag)',
     'one linear demo with (<a href="/hashtag/#hashtag">#hashtag</a>)'
+  ],
+  [
+    'is this a #hashtag?',
+    'is this a <a href="/hashtag/#hashtag">#hashtag</a>?'
+  ],
+  [
+    'brackets (@a) {#b} 《@c》 ⟨@d⟩ [@e]?',
+    'brackets ' +
+    '(<a href="/@a">@a</a>) ' +
+    '{<a href="/hashtag/#b">#b</a>} ' +
+    '《<a href="/@c">@c</a>》 ' +
+    '⟨<a href="/@d">@d</a>⟩ ' +
+    '[<a href="/@e">@e</a>]?'
+  ],
+  [
+    'guillemets ‹@a› <@b> «#c»?',
+    'guillemets ' +
+    '‹<a href="/@a">@a</a>› ' +
+    '<<a href="/@b">@b</a>> ' +
+    '«<a href="/hashtag/#c">#c</a>»?'
+  ],
+  [
+    'quotations ‘@a’ “@b” \'#c\' "@d" „@e“ “@f”',
+    'quotations ' +
+    '‘<a href="/@a">@a</a>’ ' +
+    '“<a href="/@b">@b</a>” ' +
+    '\'<a href="/hashtag/#c">#c</a>\' ' +
+    '"<a href="/@d">@d</a>" ' +
+    '„<a href="/@e">@e</a>“ ' +
+    '“<a href="/@f">@f</a>”'
+  ],
+  [
+    'is this a #hashtag? #or_hashtag!!!!!',
+    'is this a <a href="/hashtag/#hashtag">#hashtag</a>? ' +
+    '<a href="/hashtag/#or_hashtag">#or_hashtag</a>!!!!!'
+  ],
+  [
+    'is this a ###hashtag? #or_hashtag!!!!!',
+    'is this a ###hashtag? ' +
+    '<a href="/hashtag/#or_hashtag">#or_hashtag</a>!!!!!'
   ]
 ]
 test('Test Linkable', (assert) => {

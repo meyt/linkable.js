@@ -77,6 +77,15 @@ export default function (options) {
       }
   }
   const replacer = (word) => {
+    // Detect hashtag with punctuation at end
+    const hashtagMatch = word.match(patterns.hashtagWithPunctuationAtEnd)
+    if (hashtagMatch !== null && validators.validateHashtag(hashtagMatch[0])) {
+      return word.replace(
+        patterns.hashtagWithPunctuationAtEnd,
+        options.replaceHashtag
+      )
+    }
+
     if (validators.validateHashtag(word)) {
       return options.replaceHashtag(word)
     }
@@ -102,7 +111,7 @@ export default function (options) {
         /\S+/imgu,
         replacer
       ).replace(
-        /(?!\()\S+(?=\))/imgu,
+        /(?![({[⟨《]|[<«‹]|[‘“'"„”])\S+(?=[)}\]⟩》]|[>»›]|[’”'"“])/imgu,
         replacer
       )
     }
