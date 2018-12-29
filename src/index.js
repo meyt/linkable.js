@@ -76,16 +76,7 @@ export default function (options) {
         return patterns.emailPattern.test(text)
       }
   }
-  const replacer = (word) => {
-    // Detect hashtag with punctuation at end
-    const hashtagMatch = word.match(patterns.hashtagWithPunctuationAtEnd)
-    if (hashtagMatch !== null && validators.validateHashtag(hashtagMatch[0])) {
-      return word.replace(
-        patterns.hashtagWithPunctuationAtEnd,
-        options.replaceHashtag
-      )
-    }
-
+  const mainReplacer = (word) => {
     if (validators.validateHashtag(word)) {
       return options.replaceHashtag(word)
     }
@@ -104,15 +95,38 @@ export default function (options) {
 
     return word
   }
+
+  const secondReplacer = (word) => {
+    // Accept dirty hashtags
+    // Note: Hashtags should validate even have any character before the
+    // sharp (#) sign, or ends with punctuation.
+    // and its most common on social medias like Telegram
+    if (word.match(patterns.dirtyHashtag) !== null) {
+      return word.replace(
+        patterns.dirtyHashtag,
+        mainReplacer
+      )
+    }
+    return mainReplacer(word)
+  }
+
+  const firstReplacer = (word) => {
+    // Validate words hugged by any type of brackets
+    if (word.match(patterns.bracketsPattern) !== null) {
+      return word.replace(
+        patterns.bracketsPattern,
+        secondReplacer
+      )
+    }
+    return secondReplacer(word)
+  }
+
   const result = {
     validators: validators,
     replaceLinks (text) {
       return text.replace(
         /\S+/imgu,
-        replacer
-      ).replace(
-        /(?![({[⟨《]|[<«‹]|[‘“'"„”])\S+(?=[)}\]⟩》]|[>»›]|[’”'"“])/imgu,
-        replacer
+        firstReplacer
       )
     }
   }

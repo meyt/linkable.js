@@ -85,9 +85,8 @@ const matches = [
     '<a href="/hashtag/#or_hashtag">#or_hashtag</a>!!!!!'
   ],
   [
-    'is this a ###hashtag? #or_hashtag!!!!!',
-    'is this a ###hashtag? ' +
-    '<a href="/hashtag/#or_hashtag">#or_hashtag</a>!!!!!'
+    'is this a#hashtag?',
+    'is this a<a href="/hashtag/#hashtag">#hashtag</a>?'
   ]
 ]
 test('Test Linkable', (assert) => {
