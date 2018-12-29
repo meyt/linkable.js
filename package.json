@@ -4,11 +4,12 @@
   "description": "Detect URL, Email, Hashtag and Mention from plain-text and convert into HTML clickable hyperlink",
   "main": "dist/linkable.js",
   "scripts": {
+    "build-tld": "node build-tld-list.js > ./src/tld_list.js",
     "build": "rollup -c rollup.config.js && cp dist/linkable.min.js demo/linkable.min.js",
     "test": "cross-env NODE_ENV=test nyc tape ./tests/*.test.js",
     "coverage": "cross-env NODE_ENV=test nyc --reporter=text-lcov tape ./tests/*.test.js | coveralls",
     "tape": "nyc tape ./tests/linkable.test.js",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build-tld && npm run build"
   },
   "nyc": {
     "require": [
@@ -46,6 +47,7 @@
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-babel-minify": "^6.2.0",
     "tape": "^4.9.1",
-    "unicode-tr51": "^9.0.1"
+    "unicode-tr51": "^9.0.1",
+    "punycode": "^2.1.1"
   }
 }

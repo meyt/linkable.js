@@ -1,3 +1,5 @@
+import tldList from './tld_list'
+
 const ipMiddleOctet = '(\\.(1?\\d{1,2}|2[0-4]\\d|25[0-5]))'
 const ipLastOctet = '(\\.([1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))'
 
@@ -92,7 +94,7 @@ export const urlPattern = new RegExp(
   // domain name
   '(\\.([a-z\u00a1-\uffff0-9]-?)*[a-z\u00a1-\uffff0-9]+)*' +
   // TLD identifier
-  '(\\.([a-z\u00a1-\uffff]{2,}))' +
+  '(\\.(?:' + tldList + '|test|localhost))' +
   ')' +
   // port number
   '(:\\d{2,5})?' +
