@@ -1,4 +1,5 @@
 import tldList from './tld_list'
+import * as HSet from './charset/hashtag'
 
 const ipMiddleOctet = '(\\.(1?\\d{1,2}|2[0-4]\\d|25[0-5]))'
 const ipLastOctet = '(\\.([1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))'
@@ -7,25 +8,7 @@ export const twitterMentionPattern = /^@([a-z_])([a-z\d_]*)$/ui
 
 export const githubMentionPattern = /^@([a-z\d-]+)$/ui
 
-export const hashtagPattern = new RegExp(
-  '^' +
-  // Start with ＃ or #
-  '[＃#]' +
-  // Escape start with keypad unicode variations
-  '(?!\uFE0F\u20E3)' +
-  // Escape start with numbers
-  '(?!\\d\\d)(?!\\d$)' +
-  // Escape multiple hash symbols
-  '(?![＃#]+$)' +
-  // Match hashtag
-  '(?:' +
-    // Match any (unicode) characters exclude symbols
-    '[^\\s.,\\/#!$%\\^&\\*;:\\{\\}=`()~@-]+|' +
-    // Exclude keypad unicode variation
-    '\\*\uFE0F\u20E3|' +
-    '#\uFE0F\u20E3)' +
-  '$', 'ui'
-)
+export const hashtagPattern = new RegExp('^' + HSet.boundary + '$', 'i')
 
 export const urlPattern = new RegExp(
   '^' +
@@ -113,7 +96,7 @@ export const dirtyHashtagPattern = new RegExp(
   // Negative lookahead any invisible character
   '(?!\\s)' +
   // Any hashtag-like word exclude punctuation at end
-  '([＃#][^\\s.,/!‼⁉〰〽$%^&*;:=`~@?#＃-]+)' +
+  '([＃#][^\\s' + HSet.excludedPunctuation + ']+)' +
   // Positive lookahead to any character
   '(?=.*)', 'ui'
 )

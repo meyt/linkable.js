@@ -9,9 +9,9 @@ const validItems = [
   '#نمیشود',
   '#گنجشک',
   '#می‌شود',
+  '#والـپـِیپِر',
   '#the_quick_brown_fox_jumps_over_the_lazy_dog',
   '#Lorem_a',
-  '#\uD83D\uDCA9',
   '＃lorem_ipsum'
 ]
 
@@ -28,12 +28,11 @@ const invalidItems = [
   '＃##️⃣',
   '###️⃣',
   '#@',
-  '#!@$%^&*('
+  '#!@$%^&*(',
+  '#\uD83D\uDCA9',
+  '#an_🤵🏻emoji',
+  '#an_emoji😐'
 ]
-
-const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-const punctuationEmoji = ['‼', '〽', '〰', '⁉', '‼']
-const punctuation = ['*', '#']
 
 test('Test hashtags', (assert) => {
   const validateHashtag = Linkable().validators.validateHashtag
@@ -49,15 +48,12 @@ test('Test hashtags', (assert) => {
   Emoji.forEach(codePoint => {
     const emoji = String.fromCodePoint(codePoint)
     const hashtag = `#${emoji}`
-    if ([...numbers, ...punctuationEmoji, ...punctuation].includes(emoji)) {
-      return
-    }
-    assert.equal(validateHashtag(hashtag), true, 'Validating: ' + hashtag)
+    assert.equal(validateHashtag(hashtag), false, 'Validating: ' + hashtag)
   })
 
   sequences.forEach(sequence => {
     const hashtag = `#${sequence}`
-    assert.equal(validateHashtag(hashtag), true, 'Validating: ' + hashtag)
+    assert.equal(validateHashtag(hashtag), false, 'Validating: ' + hashtag)
   })
 
   assert.end()
