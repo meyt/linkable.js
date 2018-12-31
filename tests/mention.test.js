@@ -5,7 +5,8 @@ const validGlobalMentions = [
   '@a',
   '@lorem',
   '@LOREM',
-  '@with5'
+  '@with5',
+  '＠specialSign'
 ]
 
 const invalidGlobalMentions = [

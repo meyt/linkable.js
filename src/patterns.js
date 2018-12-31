@@ -1,12 +1,19 @@
 import tldList from './tld_list'
 import * as HSet from './charset/hashtag'
+import * as PSet from './charset/punctuation'
 
 const ipMiddleOctet = '(\\.(1?\\d{1,2}|2[0-4]\\d|25[0-5]))'
 const ipLastOctet = '(\\.([1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))'
 
-export const twitterMentionPattern = /^@([a-z_])([a-z\d_]*)$/ui
+export const twitterMentionPattern = new RegExp(
+  '^[' + PSet.atSign + ']([a-z_])([a-z\\d_]*)$',
+  'ui'
+)
 
-export const githubMentionPattern = /^@([a-z\d-]+)$/ui
+export const githubMentionPattern = new RegExp(
+  '^[' + PSet.atSign + ']([a-z\\d-]+)$',
+  'ui'
+)
 
 export const hashtagPattern = new RegExp('^' + HSet.boundary + '$', 'i')
 
@@ -96,7 +103,7 @@ export const dirtyHashtagPattern = new RegExp(
   // Negative lookahead any invisible character
   '(?!\\s)' +
   // Any hashtag-like word exclude punctuation at end
-  '([＃#][^\\s' + HSet.excludedPunctuation + ']+)' +
+  '([' + PSet.hash + '][^\\s' + HSet.excludedPunctuation + ']+)' +
   // Positive lookahead to any character
   '(?=.*)', 'ui'
 )
