@@ -1,7 +1,8 @@
 node_modules
 dist
-coverage
+coverage/*
 demo/linkable.min.js
-practice
-.nyc_output
+practice/*
+.nyc_output/*
 package-lock.json
+.cache/*

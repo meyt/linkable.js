@@ -62,19 +62,6 @@ https://ka.wikipedia.org/wiki/მთავარი_გვერდი
     </div>
   </div>
 
-  <script src="./linkable.min.js"></script>
-  <script>
-    var linkable = Linkable()
-    var sourceEl = document.getElementById('source')
-    var resultEl = document.getElementById('result')
-    var updateResult = function () {
-      var result = sourceEl.value
-      result = linkable.replaceLinks(result)
-      result = result.replace(/(?:\r\n|\r|\n)/mg, '<br>')
-      resultEl.innerHTML = result
-    }
-    sourceEl.onkeyup = updateResult
-    updateResult()
-  </script>
+  <script src="./dist/script.js"></script>
 </body>
 </html>
