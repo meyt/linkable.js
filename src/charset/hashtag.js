@@ -24,5 +24,3 @@ export const boundary =
   '(?!.*(' + emojiRegex().source + ').*)' +
   // Match any (unicode) characters exclude punctuation
   '(?:[^\\s' + excludedPunctuation + ']+)'
-
-console.log(boundary)
