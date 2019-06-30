@@ -84,9 +84,34 @@ const matches = [
     'is this a <a href="/hashtag/#hashtag">#hashtag</a>? ' +
     '<a href="/hashtag/#or_hashtag">#or_hashtag</a>!!!!!'
   ],
+  // Hashtag should separate with spaces
   [
     'is this a#hashtag?',
-    'is this a<a href="/hashtag/#hashtag">#hashtag</a>?'
+    'is this a#hashtag?'
+  ],
+  [
+    'is this #hashtag#another',
+    'is this #hashtag#another'
+  ],
+  // Start with hashtag
+  [
+    '#hashtag! is coming...',
+    '<a href="/hashtag/#hashtag">#hashtag</a>! is coming...'
+  ],
+  // Hashtag should detected with emoji at end
+  [
+    'Wow its #hashtag😍!',
+    'Wow its <a href="/hashtag/#hashtag">#hashtag</a>😍!'
+  ],
+  // Mention should detected with emoji at end
+  [
+    'Wow its @mention😍!',
+    'Wow its <a href="/@mention">@mention</a>😍!'
+  ],
+  // Start with mention
+  [
+    '@mention😍!',
+    '<a href="/@mention">@mention</a>😍!'
   ]
 ]
 test('Test Linkable', (assert) => {

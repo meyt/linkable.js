@@ -107,6 +107,12 @@ export default function (options) {
         mainReplacer
       )
     }
+    if (word.match(patterns.dirtyMention) !== null) {
+      return word.replace(
+        patterns.dirtyMention,
+        mainReplacer
+      )
+    }
     return mainReplacer(word)
   }
 

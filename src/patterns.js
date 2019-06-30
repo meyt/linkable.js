@@ -1,6 +1,7 @@
 import tldList from './tld_list'
 import * as HSet from './charset/hashtag'
 import * as PSet from './charset/punctuation'
+import emojiRegex from 'emoji-regex'
 
 const ipMiddleOctet = '(\\.(1?\\d{1,2}|2[0-4]\\d|25[0-5]))'
 const ipLastOctet = '(\\.([1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))'
@@ -100,12 +101,17 @@ export const urlPattern = new RegExp(
 export const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/ui
 
 export const dirtyHashtagPattern = new RegExp(
-  // Negative lookahead any invisible character
-  '(?!\\s)' +
+  // Looking for invisible character
+  '(?:^|\\s|' + PSet.hash.split('').join('|') + ')' +
   // Any hashtag-like word exclude punctuation at end
-  '([' + PSet.hash + '][^\\s' + HSet.excludedPunctuation + ']+)' +
-  // Positive lookahead to any character
-  '(?=.*)', 'ui'
+  '([' + PSet.hash + '](?:.(?![\\s' + HSet.excludedPunctuation + ']|' + emojiRegex().source + '))*.)',
+  'i'
+)
+
+export const dirtyMentionPattern = new RegExp(
+  '(?:^|\\s|' + PSet.atSign.split('').join('|') + ')' +
+  '([' + PSet.atSign + '][a-z\\d-_]+)',
+  'i'
 )
 
 export const bracketsPattern =
@@ -118,5 +124,6 @@ export default {
   urlPattern: urlPattern,
   emailPattern: emailPattern,
   dirtyHashtag: dirtyHashtagPattern,
+  dirtyMention: dirtyMentionPattern,
   bracketsPattern: bracketsPattern
 }
