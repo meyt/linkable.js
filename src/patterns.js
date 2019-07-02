@@ -104,7 +104,7 @@ export const dirtyHashtagPattern = new RegExp(
   // Looking for invisible character
   '(?:^|\\s|' + PSet.hash.split('').join('|') + ')' +
   // Any hashtag-like word exclude punctuation at end
-  '([' + PSet.hash + '](?:.(?![\\s' + HSet.excludedPunctuation + ']|' + emojiRegex().source + '))*.)',
+  '([' + PSet.hash + '](?![' + PSet.hash + ']|\\s)(?:.(?![\\s' + HSet.excludedPunctuation + ']|' + emojiRegex().source + '))*.)',
   'i'
 )
 

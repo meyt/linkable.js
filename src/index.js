@@ -1,7 +1,9 @@
 
 import patterns from './patterns'
+import * as PSet from './charset/punctuation'
 
 const urlSchemeRegex = /\S+:\/\//i
+const hashRepeatRegex = new RegExp('(^[' + PSet.hash + ']{2,})', 'g')
 
 function replaceHashtag (value) {
   return `<a href="/hashtag/${value}">${value}</a>`
@@ -76,8 +78,21 @@ export default function (options) {
         return patterns.emailPattern.test(text)
       }
   }
-  const mainReplacer = (word) => {
+  const mainReplacer = (word, wordAlt) => {
+    // DIRTY_PATCH: Duo to lack of JS RegEx look-behind support
+    // to detect hashtags started with multiple hash symbol
+    let repeatedHash = null
+    if (wordAlt && word.match(hashRepeatRegex)) {
+      repeatedHash = word.match(hashRepeatRegex)[0]
+      word = wordAlt
+    }
+
     if (validators.validateHashtag(word)) {
+      if (repeatedHash !== null) {
+        return (
+          repeatedHash.substr(0, repeatedHash.length - 1)
+        ) + options.replaceHashtag(word)
+      }
       return options.replaceHashtag(word)
     }
 

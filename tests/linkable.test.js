@@ -50,6 +50,11 @@ const matches = [
     'one linear demo with (<a href="/hashtag/#hashtag">#hashtag</a>)'
   ],
   [
+    'is this a ###hashtag? #or_hashtag!!!!!',
+    'is this a ##<a href="/hashtag/#hashtag">#hashtag</a>? ' +
+    '<a href="/hashtag/#or_hashtag">#or_hashtag</a>!!!!!'
+  ],
+  [
     'is this a #hashtag?',
     'is this a <a href="/hashtag/#hashtag">#hashtag</a>?'
   ],
