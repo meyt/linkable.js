@@ -32,7 +32,8 @@ const invalidItems = [
   '#\uD83D\uDCA9',
   '#an_🤵🏻emoji',
   '#an_emoji😐',
-  '#x&y'
+  '#x&y',
+  '#itsnot#hashtag'
 ]
 
 test('Test hashtags', (assert) => {

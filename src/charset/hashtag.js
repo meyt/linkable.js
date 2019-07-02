@@ -1,4 +1,4 @@
-import emojiRegex from 'emoji-regex/text.js'
+import emojiRegex from '../emoji'
 import * as p from './punctuation'
 
 // Source: https://github.com/twitter/twitter-text/blob/master/js/src/regexp/hashtagSpecialChars.js
@@ -19,8 +19,8 @@ export const boundary =
   // Escape start with numbers
   '(?!\\d\\d)(?!\\d$)' +
   // Escape multiple hash symbols
-  '(?![' + p.hash + ']+$)' +
+  '(?![' + p.hash + ']+)' +
   // Escape emoji
   '(?!.*(' + emojiRegex().source + ').*)' +
   // Match any (unicode) characters exclude punctuation
-  '(?:[^\\s' + excludedPunctuation + ']+)'
+  '(?:[^\\s' + p.hash + excludedPunctuation + ']+)'

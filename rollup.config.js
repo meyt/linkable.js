@@ -1,10 +1,8 @@
 import minify from 'rollup-plugin-babel-minify'
 
-const globals = {
-  'emoji-regex/text.js': 'emojiRegex'
-}
+const globals = {}
 
-const external = ['emoji-regex/text.js']
+const external = []
 
 export default [
   {

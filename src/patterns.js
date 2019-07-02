@@ -1,7 +1,7 @@
 import tldList from './tld_list'
 import * as HSet from './charset/hashtag'
 import * as PSet from './charset/punctuation'
-import emojiRegex from 'emoji-regex'
+import emojiRegex from './emoji'
 
 const ipMiddleOctet = '(\\.(1?\\d{1,2}|2[0-4]\\d|25[0-5]))'
 const ipLastOctet = '(\\.([1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))'

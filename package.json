@@ -52,8 +52,5 @@
     "rollup-plugin-babel-minify": "^6.2.0",
     "tape": "^4.9.1",
     "unicode-tr51": "^9.0.1"
-  },
-  "dependencies": {
-    "emoji-regex": "^7.0.3"
   }
 }
