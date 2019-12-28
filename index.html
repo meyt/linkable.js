@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Linkable.js">
+  <title>Linkable.js</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="header">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+      <a class="pure-menu-heading" href="">Linkable.js</a>
+
+      <ul class="pure-menu-list">
+        <li class="pure-menu-item">
+          <a href="https://github.com/meyt/linkable.js" class="pure-menu-link">
+            View on Github
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="splash-container">
+    <div class="splash">
+      <textarea id="source">Examples:
+Simply a domain:
+www.google.com
+Domain with port:
+www.google.com:8000
+URL with query:
+www.google.com/?key=value
+Domain with international TLD:
+github.io
+Email address:
+alex@arrayy.com
+IP address:
+127.0.0.1:8000/somethinghere
+HTML elements won't break:
+<img src='http://dummyimage.com/50'>
+Capital case:
+FTP://GOOGLE.COM
+mixed case:
+youtube.com/watch?v=pS-gbqbVd8c
+Links with parenthesis:
+en.c.org/a_(b)
+Links inside parenthesis:
+(www.google.com)
+Links with paranethisis AND inside paranthesis:
+(en.c.org/a_(x)_(y))
+And non English letters:
+https://ka.wikipedia.org/wiki/მთავარი_გვერდი
+@Mention
+#hash_tag
+@mention_with_emoji😍
+#hashtag_with_emoji😍
+#hashtag_with_punctuation!!
+@Mention_with_punctuation!!
+Its not@mention!
+Its not#hashtag!</textarea>
+      <div id="result"></div>
+    </div>
+  </div>
+
+  <script src="./dist/script.js"></script>
+</body>
+</html>
